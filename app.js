@@ -19,58 +19,79 @@ const auth = getAuth(app);
 const db = getDatabase(app);
 
 // Sign Up
-document.getElementById('signUpButton').addEventListener('click', () => {
+document.getElementById('signUpButton').addEventListener('click', async () => {
     const firstName = document.getElementById('firstName').value;
     const lastName = document.getElementById('lastName').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            const userId = userCredential.user.uid;
-            set(ref(db, 'users/' + userId), {
-                firstName: firstName,
-                lastName: lastName,
-                email: email
-            });
-            alert("تم إنشاء الحساب!");
-            document.getElementById('auth').style.display = 'none';
-            document.getElementById('chat').style.display = 'block';
-        })
-        .catch((error) => {
-            alert("خطأ: " + error.message);
+    if (!firstName || !lastName || !email || !password) {
+        alert("يرجى ملء جميع الحقول.");
+        return;
+    }
+
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const userId = userCredential.user.uid;
+        await set(ref(db, 'users/' + userId), {
+            firstName: firstName,
+            lastName: lastName,
+            email: email
         });
+        alert("تم إنشاء الحساب!");
+        document.getElementById('auth').style.display = 'none';
+        document.getElementById('chat').style.display = 'block';
+    } catch (error) {
+        console.error("Error code:", error.code);
+        console.error("Error message:", error.message);
+        alert("خطأ: " + error.message);
+    }
 });
 
 // Login
-document.getElementById('loginButton').addEventListener('click', () => {
+document.getElementById('loginButton').addEventListener('click', async () => {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
 
-    signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
-            alert("تم تسجيل الدخول بنجاح!");
-            document.getElementById('auth').style.display = 'none';
-            document.getElementById('chat').style.display = 'block';
-            loadFriends();
-        })
-        .catch((error) => {
-            alert("خطأ: " + error.message);
-        });
+    if (!email || !password) {
+        alert("يرجى ملء جميع الحقول.");
+        return;
+    }
+
+    try {
+        await signInWithEmailAndPassword(auth, email, password);
+        alert("تم تسجيل الدخول بنجاح!");
+        document.getElementById('auth').style.display = 'none';
+        document.getElementById('chat').style.display = 'block';
+        loadFriends();
+    } catch (error) {
+        console.error("Error code:", error.code);
+        console.error("Error message:", error.message);
+        alert("خطأ: " + error.message);
+    }
 });
 
 // Sending messages
-document.getElementById('sendMessageButton').addEventListener('click', () => {
+document.getElementById('sendMessageButton').addEventListener('click', async () => {
     const message = document.getElementById('messageInput').value;
-    const userId = auth.currentUser.uid;
+    const userId = auth.currentUser?.uid;
 
-    push(ref(db, 'messages'), {
-        userId: userId,
-        message: message,
-        timestamp: Date.now()
-    });
+    if (!message) {
+        alert("يرجى كتابة رسالة.");
+        return;
+    }
 
-    document.getElementById('messageInput').value = '';
+    try {
+        await push(ref(db, 'messages'), {
+            userId: userId,
+            message: message,
+            timestamp: Date.now()
+        });
+        document.getElementById('messageInput').value = '';
+    } catch (error) {
+        console.error("Error sending message:", error.message);
+        alert("حدث خطأ أثناء إرسال الرسالة.");
+    }
 });
 
 // Displaying messages
