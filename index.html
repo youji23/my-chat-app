@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق الدردشة</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js"></script>
+</head>
+<body>
+    <div id="auth">
+        <h2>إنشاء حساب</h2>
+        <input type="text" id="firstName" placeholder="الاسم الأول" required>
+        <input type="text" id="lastName" placeholder="الاسم الأخير" required>
+        <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+        <input type="password" id="password" placeholder="كلمة السر" required>
+        <button id="signUpButton">إنشاء حساب</button>
+        
+        <h2>تسجيل الدخول</h2>
+        <input type="email" id="loginEmail" placeholder="البريد الإلكتروني" required>
+        <input type="password" id="loginPassword" placeholder="كلمة السر" required>
+        <button id="loginButton">تسجيل الدخول</button>
+    </div>
+
+    <div id="chat" style="display:none;">
+        <h2>الدردشة</h2>
+        <input type="text" id="search" placeholder="ابحث عن أصدقائك" oninput="searchFriends()">
+        <div id="friendsList"></div>
+        <div id="messageContainer" style="display:none;">
+            <input type="text" id="messageInput" placeholder="اكتب رسالتك هنا...">
+            <button id="sendMessageButton">إرسال</button>
+        </div>
+        <div id="messages"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

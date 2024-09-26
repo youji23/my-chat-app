@@ -1,0 +1,128 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #4B0082, #1E90FF); /* خلفية بتدرج أزرق وبنفسجي */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    color: #FFFFFF; /* عنوان بلون أبيض */
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 28px;
+}
+
+input {
+    width: 80%; /* عرض متوسط للخانات */
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+    box-shadow: 0 0 8px rgba(90, 125, 255, 0.8);
+    outline: none;
+}
+
+button {
+    background-color: #FF4500; /* لون الزر برتقالي غامق */
+    color: #FFFFFF; /* نص الزر باللون الأبيض */
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    width: 80%; /* عرض متوسط للزر */
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    background-color: #FF6347; /* تدرج لون الزر عند التحويم */
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.8); /* توهج عند التحويم */
+}
+
+#friendsList {
+    width: 80%; /* عرض متوسط لقائمة الأصدقاء */
+    max-height: 300px;
+    overflow-y: auto; /* شريط التمرير */
+    margin: 10px 0;
+}
+
+#friendsList div {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: rgba(255, 255, 255, 0.9); /* لون خلفية الأصدقاء */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#friendsList div:hover {
+    background-color: rgba(255, 255, 255, 0.7); /* لون خلفية الصديق عند التحويم */
+}
+
+#messageContainer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#messageInput {
+    width: 80%; /* عرض متوسط لحقل الرسالة */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+#messageInput:focus {
+    box-shadow: 0 0 8px rgba(90, 125, 255, 0.8);
+    outline: none;
+}
+
+#messages {
+    margin-top: 15px;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.message {
+    padding: 8px;
+    border-radius: 8px;
+    margin: 5px 0;
+}
+
+.message.sender {
+    background-color: #5A7DFF; /* لون رسالة المرسل */
+    color: white;
+    text-align: right;
+}
+
+.message.receiver {
+    background-color: rgba(0, 123, 255, 0.2); /* لون رسالة المستلم */
+    text-align: left;
+}
+
+/* الرسوم المتحركة */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#messages .message {
+    animation: fadeIn 0.5s;
+}
