@@ -1,7 +1,3 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js";
-import { getDatabase, ref, set, push, onChildAdded, onValue } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js";
-
 // Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyBwnPr1Fbts5447dBvreOiPiTADGtuxAd8",
@@ -14,9 +10,9 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getDatabase(app);
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.database();
 
 // Sign Up
 document.getElementById('signUpButton').addEventListener('click', () => {
@@ -25,10 +21,10 @@ document.getElementById('signUpButton').addEventListener('click', () => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    createUserWithEmailAndPassword(auth, email, password)
+    auth.createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
             const userId = userCredential.user.uid;
-            set(ref(db, 'users/' + userId), {
+            firebase.database().ref('users/' + userId).set({
                 firstName: firstName,
                 lastName: lastName,
                 email: email
@@ -47,7 +43,7 @@ document.getElementById('loginButton').addEventListener('click', () => {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
 
-    signInWithEmailAndPassword(auth, email, password)
+    auth.signInWithEmailAndPassword(email, password)
         .then(() => {
             alert("تم تسجيل الدخول بنجاح!");
             document.getElementById('auth').style.display = 'none';
@@ -64,7 +60,7 @@ document.getElementById('sendMessageButton').addEventListener('click', () => {
     const message = document.getElementById('messageInput').value;
     const userId = auth.currentUser.uid;
 
-    push(ref(db, 'messages'), {
+    firebase.database().ref('messages').push({
         userId: userId,
         message: message,
         timestamp: Date.now()
@@ -74,7 +70,7 @@ document.getElementById('sendMessageButton').addEventListener('click', () => {
 });
 
 // Displaying messages
-onChildAdded(ref(db, 'messages'), (snapshot) => {
+firebase.database().ref('messages').on('child_added', (snapshot) => {
     const data = snapshot.val();
     const messagesDiv = document.getElementById('messages');
     const messageDiv = document.createElement('div');
@@ -85,7 +81,7 @@ onChildAdded(ref(db, 'messages'), (snapshot) => {
 // Loading friends
 function loadFriends() {
     const friendsList = document.getElementById('friendsList');
-    onValue(ref(db, 'users'), (snapshot) => {
+    firebase.database().ref('users').on('value', (snapshot) => {
         friendsList.innerHTML = ''; // Clear existing list
         snapshot.forEach((childSnapshot) => {
             const childData = childSnapshot.val();
@@ -97,7 +93,7 @@ function loadFriends() {
 }
 
 // Searching for friends
-document.getElementById('searchButton').addEventListener('click', () => {
+document.getElementById('search').addEventListener('input', () => {
     const query = document.getElementById('search').value.toLowerCase();
     const friendsList = document.getElementById('friendsList').children;
 
