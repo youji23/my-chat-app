@@ -1,1 +1,362 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دقيقة إلهام | بودكاست يومي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap');
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f8fafc;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #6b21a8 0%, #1e40af 100%);
+        }
+        .podcast-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        .podcast-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .audio-player {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+        }
+        .category-badge {
+            top: -12px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-podcast text-2xl"></i>
+                <h1 class="text-xl font-bold">دقيقة إلهام</h1>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#today" class="hover:text-purple-200">حلقة اليوم</a>
+                <a href="#archive" class="hover:text-purple-200">الأرشيف</a>
+                <a href="#about" class="hover:text-purple-200">عن البودكاست</a>
+                <a href="#share" class="hover:text-purple-200">شاركنا</a>
+            </div>
+            <button class="md:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
 
+    <!-- الهيرو -->
+    <header class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-2xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">بودكاست يومي مدته دقيقة واحدة</h2>
+                <p class="text-lg mb-8">كل يوم فكرة جديدة: نجاح، حكمة، تجربة، أو ملخص كتاب</p>
+                <div class="flex justify-center space-x-4">
+                    <button class="bg-white text-purple-800 px-6 py-2 rounded-full font-bold hover:bg-purple-100 transition">
+                        استمع الآن <i class="fas fa-headphones ml-2"></i>
+                    </button>
+                    <button class="border border-white text-white px-6 py-2 rounded-full font-bold hover:bg-white hover:text-purple-800 transition">
+                        اشترك <i class="fas fa-bell ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- حلقة اليوم -->
+    <section id="today" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">حلقة اليوم</h3>
+                <div class="w-20 h-1 bg-purple-600 mx-auto"></div>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden podcast-card">
+                    <div class="relative">
+                        <div class="category-badge absolute bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            ملخص كتاب
+                        </div>
+                        <img src="https://placehold.co/800x450/gray/white?text=دقيقة+إلهام" alt="غلاف حلقة بودكاست دقيقة إلهام اليومية مع كتاب مفتوح وصورة ملهمة" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-gray-800 mb-2">ملخص كتاب: العادات السبع للناس الأكثر فعالية</h4>
+                        <p class="text-gray-600 mb-4">"النجاح ليس مصادفة، بل هو نتيجة لعادات يومية نكررها باستمرار" - ستيفن كوفي في كتابه الأكثر مبيعاً</p>
+                        
+                        <div class="audio-player rounded-lg p-4 mb-4">
+                            <audio controls class="w-full rounded-lg">
+                                <source src="https://example.com/podcast.mp3" type="audio/mpeg">
+                                متصفحك لا يدعم تشغيل الصوتيات.
+                            </audio>
+                        </div>
+                        
+                        <div class="flex items-center justify-between text-gray-500 text-sm">
+                            <div>
+                                <i class="far fa-clock mr-1"></i> 1 دقيقة
+                            </div>
+                            <div>
+                                <span class="mr-2">24 يونيو 2023</span>
+                                <i class="far fa-calendar-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-100 p-4 bg-gray-50">
+                        <div class="flex justify-between">
+                            <button class="text-purple-600 hover:text-purple-800">
+                                <i class="fas fa-share-alt mr-1"></i> مشاركة
+                            </button>
+                            <button class="text-purple-600 hover:text-purple-800">
+                                <i class="far fa-bookmark mr-1"></i> حفظ
+                            </button>
+                            <button class="text-purple-600 hover:text-purple-800">
+                                <i class="fas fa-transcript mr-1"></i> النص الكامل
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- مشاركة الحلقة -->
+    <section id="share" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">شارك الحلقة</h3>
+                <p class="text-gray-600">انشر الفائدة وساعد الآخرين على الاستفادة</p>
+                <div class="w-20 h-1 bg-purple-600 mx-auto"></div>
+            </div>
+
+            <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-md p-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <a href="#" class="bg-blue-600 text-white py-3 px-4 rounded-lg text-center hover:bg-blue-700 transition">
+                        <i class="fab fa-facebook-f"></i> فيسبوك
+                    </a>
+                    <a href="#" class="bg-pink-600 text-white py-3 px-4 rounded-lg text-center hover:bg-pink-700 transition">
+                        <i class="fab fa-instagram"></i> إنستغرام
+                    </a>
+                    <a href="#" class="bg-black text-white py-3 px-4 rounded-lg text-center hover:bg-gray-800 transition">
+                        <i class="fab fa-tiktok"></i> تيك توك
+                    </a>
+                    <a href="#" class="bg-green-600 text-white py-3 px-4 rounded-lg text-center hover:bg-green-700 transition">
+                        <i class="fab fa-whatsapp"></i> واتساب
+                    </a>
+                </div>
+
+                <div class="mt-6">
+                    <label class="block text-gray-700 mb-2">رابط المشاركة</label>
+                    <div class="flex">
+                        <input type="text" value="https://dqi.com/today" class="flex-grow border border-gray-300 rounded-r-none rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <button class="bg-purple-600 text-white px-4 py-2 rounded-l-none rounded-lg hover:bg-purple-700 transition">
+                            نسخ <i class="fas fa-copy ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الأرشيف -->
+    <section id="archive" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">الأرشيف</h3>
+                <p class="text-gray-600">استمع إلى الحلقات السابقة</p>
+                <div class="w-20 h-1 bg-purple-600 mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- حلقة 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden podcast-card">
+                    <div class="relative">
+                        <div class="category-badge absolute bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            نجاح
+                        </div>
+                        <img src="https://placehold.co/600x400/blue/white?text=قصة+نجاح" alt="رجل أعمال ناجح يقف أمام مخططات عمل بيضاء مع ابتسامة واثقة" class="w-full h-40 object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-gray-800 mb-2">كيف بنيت مشروعي من الصفر</h4>
+                        <p class="text-gray-600 text-sm mb-3">درس قيم من تجربة شخصية في ريادة الأعمال</p>
+                        <div class="flex justify-between text-gray-500 text-xs">
+                            <span><i class="far fa-clock mr-1"></i> 1 دقيقة</span>
+                            <span>23 يونيو 2023</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- حلقة 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden podcast-card">
+                    <div class="relative">
+                        <div class="category-badge absolute bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            حكمة
+                        </div>
+                        <img src="https://placehold.co/600x400/green/white?text=حكمة+اليوم" alt="شخص كبير السن يروي حكمة قديمة مع إطلالة على غروب الشمس" class="w-full h-40 object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-gray-800 mb-2">الحكمة التي غيرت حياتي</h4>
+                        <p class="text-gray-600 text-sm mb-3">كلمة واحدة قد تغير منظورك كلياً للحياة</p>
+                        <div class="flex justify-between text-gray-500 text-xs">
+                            <span><i class="far fa-clock mr-1"></i> 1 دقيقة</span>
+                            <span>22 يونيو 2023</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- حلقة 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden podcast-card">
+                    <div class="relative">
+                        <div class="category-badge absolute bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            تجربة
+                        </div>
+                        <img src="https://placehold.co/600x400/red/white?text=تجربة+شخصية" alt="سيدة تشارك تجربتها في قاعة مؤتمرات مع لوحة بيانات تفاعلية" class="w-full h-40 object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-gray-800 mb-2">تعلمت من الفشل أكثر مما تعلمت من النجاح</h4>
+                        <p class="text-gray-600 text-sm mb-3">قصة تحفيزية عن الاستفادة من الأخطاء</p>
+                        <div class="flex justify-between text-gray-500 text-xs">
+                            <span><i class="far fa-clock mr-1"></i> 1 دقيقة</span>
+                            <span>21 يونيو 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-8">
+                <button class="border border-purple-600 text-purple-600 px-6 py-2 rounded-full font-bold hover:bg-purple-600 hover:text-white transition">
+                    عرض المزيد <i class="fas fa-chevron-down ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- منصات البث -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">استمع على منصات البث</h3>
+                <p class="text-gray-600">توفر "دقيقة إلهام" على جميع المنصات الرئيسية</p>
+                <div class="w-20 h-1 bg-purple-600 mx-auto"></div>
+            </div>
+
+            <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="#" class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center justify-center hover:shadow-md transition h-24">
+                    <i class="fab fa-spotify text-3xl text-green-500 mb-2"></i>
+                    <span class="text-gray-700">سبوتيفاي</span>
+                </a>
+                <a href="#" class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center justify-center hover:shadow-md transition h-24">
+                    <i class="fab fa-apple text-3xl text-gray-800 mb-2"></i>
+                    <span class="text-gray-700">بودكاست آبل</span>
+                </a>
+                <a href="#" class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center justify-center hover:shadow-md transition h-24">
+                    <i class="fab fa-google text-3xl text-blue-500 mb-2"></i>
+                    <span class="text-gray-700">بودكاست جوجل</span>
+                </a>
+                <a href="#" class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center justify-center hover:shadow-md transition h-24">
+                    <i class="fas fa-podcast text-3xl text-purple-500 mb-2"></i>
+                    <span class="text-gray-700">أخرى</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- عن البودكاست -->
+    <section id="about" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">عن "دقيقة إلهام"</h3>
+                    <div class="w-20 h-1 bg-purple-600 mx-auto"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <img src="https://placehold.co/600x400/purple/white?text=دقيقة+إلهام" alt="فريق دقيقة إلهام يعمل على إنتاج بودكاست يومي في استوديو حديث" class="rounded-lg shadow-md w-full">
+                    </div>
+                    <div>
+                        <p class="text-gray-700 mb-4">"دقيقة إلهام" هو بودكاست يومي قصير يقدم لك جرعة مركزة من المعرفة في دقيقة واحدة فقط، صمم خصيصاً لتناسب حياتك المزدحمة.</p>
+                        <p class="text-gray-700 mb-4">كل يوم نقدم لك فكرة واحدة في أحد المجالات: قصة نجاح، حكمة مؤثرة، تجربة شخصية، أو ملخص كتاب مع نواتج عملية قابلة للتطبيق.</p>
+                        <p class="text-gray-700">بإمكانك الاستماع أثناء القيادة، في المواصلات، أو حتى أثناء انتظارك لفنجان القهوة!</p>
+                        
+                        <div class="mt-6">
+                            <h4 class="font-bold text-gray-800 mb-2">مميزات البودكاست:</h4>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                <li>محتوى يومي جديد مدته دقيقة واحدة فقط</li>
+                                <li>نص مكتوب لكل حلقة لغير الراغبين بالاستماع</li>
+                                <li>تصنيفات واضحة حسب الموضوع</li>
+                                <li>سهولة المشاركة على وسائل التواصل</li>
+                                <li>متوفر على جميع منصات البث الرئيسية</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- النشرة البريدية -->
+    <section class="py-12 gradient-bg text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto text-center">
+                <h3 class="text-2xl font-bold mb-4">اشترك في النشرة البريدية</h3>
+                <p class="mb-6">احصل على ملخص أسبوعي للحلقات مباشرة إلى بريدك الإلكتروني</p>
+                
+                <div class="flex flex-col md:flex-row gap-2">
+                    <input type="email" placeholder="بريدك الإلكتروني" class="flex-grow px-4 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-300">
+                    <button class="bg-white text-purple-800 px-6 py-3 rounded-lg font-bold hover:bg-purple-100 transition">
+                        اشترك الآن <i class="fas fa-envelope ml-2"></i>
+                    </button>
+                </div>
+                
+                <p class="text-sm mt-4 text-purple-200">نعدك بعدم إرسال بريد مزعج، يمكنك إلغاء الاشتراك في أي وقت.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- تذييل الصفحة -->
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-podcast text-xl text-purple-400"></i>
+                        <span class="text-lg font-bold text-white">دقيقة إلهام</span>
+                    </div>
+                    <p class="text-sm mt-2">بودكاست يومي لمحبي المعرفة</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fab fa-spotify"></i></a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-6 text-sm text-center">
+                <p>© 2023 دقيقة إلهام. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // تفعيل مشغل الصوت
+        document.querySelectorAll('audio').forEach(audio => {
+            audio.addEventListener('play', function() {
+                document.querySelectorAll('audio').forEach(otherAudio => {
+                    if (otherAudio !== audio) otherAudio.pause();
+                });
+            });
+        });
+
+        // نسخ الرابط
+        document.querySelector('[aria-label="نسخ الرابط"]')?.addEventListener('click', function() {
+            const copyText = document.querySelector('#podcast-link');
+            copyText.select
